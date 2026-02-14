@@ -6,7 +6,7 @@ import ImageUpload from "./ImagePostUpload";
 import CategoryPost from "./CategoryPostUpload";
 import TagsUpload from "./TagsPostUpload";
 import ResponseMessage from "./responseMessage";
-import { connect } from "../../../Services/FormUpload.service";
+import { connect } from "../../../Services/FormService/FormUpload.service";
 import { useNavigate } from "react-router-dom";
 export default function UploadForm() {
   const formRef = useRef(null);

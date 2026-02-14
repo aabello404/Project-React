@@ -1,4 +1,4 @@
-import { ValidateInputs } from "../../../Services/FormUpload.service";
+import { ValidateInputs } from "../../../Services/FormService/FormUpload.service";
 import style from "./FormUpload.module.css";
 import { useEffect, useRef, useState } from "react";
 interface childProps {
