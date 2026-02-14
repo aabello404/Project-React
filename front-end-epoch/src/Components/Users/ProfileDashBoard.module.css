@@ -1,0 +1,126 @@
+main.DashBoardMain {
+  margin-top: 70px;
+  margin-left: 80px;
+  height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+div.ProfilePhotoContainer {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+div.inputProfileImageHolder {
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+div.inputProfileImageHolder img {
+  width: 30rem;
+  height: 30rem;
+  /* background-color: black; */
+  border-radius: 50%;
+  z-index: 4;
+}
+div.inputTag.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div.inputTag {
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  width: 25.1em;
+  height: 25rem;
+  left: 16.2rem;
+  border-radius: 50%;
+  top: 2.5rem;
+  z-index: 5;
+  opacity: 0.5;
+  display: none;
+}
+
+div.inputTag input {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+
+  cursor: pointer;
+}
+div.inputTag form {
+  overflow: hidden;
+}
+div.svgContainer {
+  position: absolute;
+  z-index: 6;
+  display: none;
+}
+div.svgContainer.active {
+  display: block;
+}
+
+div.ProfileDetailsContainer {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+div.inputsContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+div.ButtunHolder {
+  position: absolute;
+  right: 38%;
+  bottom: 60%;
+  display: inline-flex;
+  gap: 10px;
+}
+div.ButtunHolder button {
+  padding: 4px 11px;
+  border-radius: 9px;
+  height: 2rem;
+  width: 3.9rem;
+  border: none;
+  cursor: pointer;
+}
+div.inputsContainer input {
+  font-size: 16px;
+  border-radius: 9px;
+  border: none;
+  padding: 5px 11px;
+  background-color: rgb(207, 200, 192);
+  height: 2rem;
+  width: 60%;
+}
+div.inputsContainer input:last-child {
+  width: 40px;
+}
+div.inputsContainer input:focus {
+  border: none;
+  background-color: white;
+}
+div.inputsContainer input.active {
+  background-color: whitesmoke;
+}
+button.SaveBtn {
+  background-color: red;
+  color: white;
+  transition: transform 0.3s ease;
+}
+button.SaveBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1px 4px black;
+}

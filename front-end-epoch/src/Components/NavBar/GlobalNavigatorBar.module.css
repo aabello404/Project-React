@@ -1,0 +1,34 @@
+* {
+  color: rgb(0, 0, 0);
+}
+input select textarea {
+  font-size: 16px !important;
+}
+nav.main {
+  height: 100vh;
+  padding-top: 7px;
+  box-sizing: border-box;
+  position: fixed;
+  border-right: 1px solid;
+  width: 80px;
+  padding-top: 80px;
+  left: 0;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+}
+
+div.navigcontainer {
+  padding: 9px;
+  display: flex;
+  flex-direction: column;
+}
+
+div.navContainer1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}

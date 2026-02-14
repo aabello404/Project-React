@@ -1,0 +1,44 @@
+div.gridimages {
+  display: grid;
+  row-gap: 15px;
+  background: #ffffff;
+  column-gap: 20px;
+  height: calc(100% - 270px);
+  grid-template-columns: 1fr 0.5fr 0.75fr 0.75fr 0.75fr 0.75fr 0.75fr;
+  grid-auto-rows: 200px;
+  grid-template-areas:
+    "box1 box1 box2 box3 box4 box5 box6"
+    "box1 box1 box2 box7 box4 box8 box6"
+    "box9 box10 box11 box7 box12 box12 box13";
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 1;
+  overflow: hidden;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+}
+
+div.box {
+  /*box containing images uses as background*/
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: black;
+  opacity: 0;
+  transform: translateY(100%);
+  transition:
+    transform 1s ease-in,
+    opacity 0.5s ease-in-out;
+  transition-delay: 0.45s;
+}
+
+div.box.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+div.box img {
+  height: 100%;
+  width: 100%;
+}

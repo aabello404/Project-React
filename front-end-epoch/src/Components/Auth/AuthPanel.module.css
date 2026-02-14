@@ -1,0 +1,39 @@
+div.allcontent {
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  background: transparent;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+div.allcontent::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(140, 135, 135, 0.45);
+  z-index: -1;
+}
+div.allcontent.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+div.boxContainer {
+  border-radius: 14px;
+  padding: 11px;
+  height: 540px;
+  z-index: 2;
+  width: 724px;
+  display: flex;
+  box-shadow: 0 1px 6px rgb(0, 0, 0);
+  border: 2px solid rgb(255, 255, 255);
+  background-color: transparent;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  position: relative;
+}

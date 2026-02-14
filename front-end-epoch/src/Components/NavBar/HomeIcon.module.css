@@ -1,0 +1,13 @@
+div.sideTopclassexplore,
+div.sideTopclass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  height: 3rem;
+  width: 3rem;
+}
+div.sideTopclassexplore:hover,
+div.sideTopclass:hover {
+  background-color: rgb(130, 127, 124);
+}

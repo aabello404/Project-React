@@ -1,0 +1,154 @@
+div.labeliptwrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+div.labelipt {
+  display: flex;
+  justify-content: center;
+  width: max-content;
+  position: relative;
+}
+div.labelipt > div {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+  right: 3%;
+  bottom: 15%;
+}
+.Emailerrorsignin {
+  color: rgb(255, 0, 0);
+  font-family: inherit;
+  font-size: large;
+}
+.passworderrorsignin {
+  color: rgb(255, 0, 0);
+  font-family: inherit;
+  font-size: large;
+}
+
+form.formulaire div.btnS {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+form.formulaire {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  height: 100%;
+  width: 50%;
+  align-items: center;
+  padding: 7px;
+  transform: translateX(50%);
+  opacity: 0;
+  transition:
+    transform 0.5s ease,
+    opacity 0.3s ease-in;
+  pointer-events: none;
+}
+form.formulaire.active {
+  pointer-events: all;
+  transform: translateX(0%);
+  opacity: 1;
+}
+form.formulaire div.labelipt label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 6px 0px 0px 6px;
+  background-color: black;
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+}
+form.formulaire div.labelipt {
+  width: inherit;
+}
+form.formulaire div.labelipt input {
+  border-left: none;
+  padding: 11px 4px;
+  height: 24px;
+  border: 2px solid;
+  width: 100%;
+  border-radius: 0px 6px 6px 0px;
+
+  font-size: 16px;
+}
+form.formulaire div.labelipt input:hover {
+  background-color: rgb(201, 202, 206);
+}
+div.labelipt input:focus {
+  outline: none;
+  border-color: gray;
+}
+
+form.formulaire div button {
+  border-radius: 1000px;
+  padding: 10px 30px;
+  margin: 0;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+}
+form.formulaire div button:focus {
+  outline: none;
+}
+form.formulaire div button:hover {
+  background-color: rgb(131, 132, 134);
+}
+form.formulaire div.labelipt.error input {
+  border-color: red;
+}
+form.formulaire div.labelipt.error label {
+  background-color: rgb(255, 0, 0);
+}
+
+svg.loader {
+  z-index: 999;
+  animation: rotate 2s linear infinite;
+  width: 50px;
+  height: 50px;
+  opacity: 1;
+}
+
+svg .path {
+  stroke: #3498db;
+  stroke-width: 4;
+  stroke-linecap: round;
+  fill: none;
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}

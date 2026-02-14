@@ -1,0 +1,8 @@
+main.main {
+  margin-top: 80px;
+  margin-left: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 80px);
+}

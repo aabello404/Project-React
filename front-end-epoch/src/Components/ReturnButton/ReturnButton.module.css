@@ -1,0 +1,17 @@
+div.returnBtnContainer {
+  display: flex;
+  justify-content: center;
+}
+div.returnBtnContainer svg:hover {
+  background-color: rgb(123, 119, 110);
+  cursor: pointer;
+}
+div.returnBtnContainer svg {
+  padding: 3px;
+  border-radius: 10px;
+}
+@media (max-width: 768px) {
+  div.returnBtnContainer {
+    display: none;
+  }
+}

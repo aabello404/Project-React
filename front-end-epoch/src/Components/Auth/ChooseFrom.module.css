@@ -1,0 +1,64 @@
+div.chooseFrom {
+  /*SIGN IN / UP PAGE popup*/
+  background-image: url("../../assets/image/B3.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: rgb(255, 255, 255);
+  box-sizing: border-box;
+  position: absolute;
+  display: flex;
+  gap: 10px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  background-color: rgb(151, 151, 151);
+  right: 0;
+  padding: 14px;
+  border-radius: inherit;
+  bottom: 0;
+  transition: transform 1s ease;
+  z-index: 4;
+}
+div.svgCancel {
+  /*cancel icon to hide signin/up page*/
+  position: absolute;
+  font-weight: bold;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+div.svgCancel svg:hover {
+  transform: perspective(600px) rotateX(30deg);
+}
+div.chooseTextContent {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+div.chooseTextContent h1,
+div.chooseTextContent h2,
+div.chooseTextContent p {
+  margin: 0%;
+  color: #ffffff;
+}
+div.chooseFrom.active {
+  transform: translateX(-100%);
+}
+div.chooseFrom button {
+  cursor: pointer;
+  border-radius: 99px;
+  padding: 4px 9px;
+  border: none;
+  background: linear-gradient(red, yellow);
+  position: relative;
+  z-index: 3;
+}
+div.chooseFrom button:focus {
+  outline: none;
+}

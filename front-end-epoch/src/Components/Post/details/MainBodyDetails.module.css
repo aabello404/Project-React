@@ -1,0 +1,27 @@
+div.divMainBody {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  margin-left: 80px;
+  margin-top: 90px;
+  width: calc(100% - 90px);
+}
+
+main.mainBody {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr 0.9fr;
+  gap: 10px;
+}
+@media (max-width: 768px) {
+  div.divMainBody {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-left: 80px;
+    margin-top: 90px;
+    width: calc(100% - 90px);
+  }
+  main.mainBody {
+    display: grid;
+    padding-left: 6px;
+    grid-template-columns: 1fr;
+  }
+}

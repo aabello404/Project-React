@@ -1,0 +1,53 @@
+div.navigatorContainer2 {
+  display: flex;
+  margin-top: auto;
+  justify-content: center;
+  padding: 7px;
+  align-items: center;
+  position: relative;
+}
+div.sideTopclassexplore,
+div.sideTopclass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  height: 3rem;
+  width: 3rem;
+  cursor: pointer;
+}
+div.sideTopclassexplore:hover,
+div.sideTopclass:hover {
+  background-color: rgb(130, 127, 124);
+}
+div.settingsBar {
+  position: absolute;
+  background-color: rgb(249, 249, 249);
+  right: -271px;
+  top: -120px;
+  height: max-content;
+  width: 250px;
+  padding: 9px;
+
+  border-radius: 7px;
+  box-shadow: 0 1px 4px;
+}
+div.settingsBar ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+}
+div.settingsBar ul li {
+  padding: 4px;
+  text-align: center;
+}
+div.settingsBar ul li:hover {
+  background-color: rgb(207, 205, 197);
+  border-radius: 7px;
+}
+div.settingsBar ul li a {
+  display: block;
+  text-decoration: none;
+  width: 100%;
+}

@@ -1,0 +1,25 @@
+p.errorSignIn {
+  color: rgb(255, 0, 0);
+  font-family: inherit;
+  font-weight: 100;
+  text-align: center;
+  padding: 3px;
+  font-size: 1.5rem;
+  border-radius: 4px;
+  box-sizing: border-box;
+  box-shadow: 0 1px 4px black;
+  background-color: transparent;
+}
+p.successSignIn {
+  color: rgb(50, 250, 0);
+  font-weight: 100;
+  font-family: inherit;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 3px;
+  background-color: transparent;
+  border-radius: 4px;
+  box-sizing: border-box;
+  box-shadow: 0 1px 4px black;
+  font-weight: bold;
+}
