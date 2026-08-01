@@ -65,4 +65,8 @@ div.settingsBar ul li a {
     border-radius: 7px;
     box-shadow: 0 1px 4px;
   }
+  div.sideTopclassexplore:hover,
+div.sideTopclass:hover {
+  background-color: transparent
+}
 }
