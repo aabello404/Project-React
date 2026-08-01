@@ -38,7 +38,7 @@ div.navContainer1 {
     height: 60px;
     padding-top: 0px;
     border-right: none;
-    border-top: 1px solid;
+    border-top: 0.3px solid rgb(165, 164, 158);
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -49,8 +49,8 @@ div.navContainer1 {
     z-index: 1000;
     box-sizing: border-box;
     backdrop-filter: blur(20px);
-    border-top-left-radius: 45%;
-    border-top-right-radius: 45%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
   div.navigcontainer {
     flex-direction: row;
