@@ -1,9 +1,12 @@
 import style from "./ProfileDashBoard.module.css";
 import ProfileIcon from "../../assets/svg/account_circle_53dp_E3E3E3_FILL1_wght400_GRAD0_opsz48.svg";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SvgLoading from "../SvgLoading/SvgLoading";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Fetch } from "../../Services/UserService/EditProfile.service";
+import LoadingAnimation from "../Feed/LoadingSkeletonFeed";
+import EpochPost from "../Feed/EpochPost";
+
 interface childprops {
   Data: {
     id: number;
@@ -15,6 +18,19 @@ interface childprops {
     profilePhotoUrl: string | null;
   };
 }
+type posts =
+  | {
+      id: number;
+      title: string;
+      location: string;
+      year: number;
+      imageUrl: string;
+      description: string;
+      userId: number;
+      catId: number;
+      createdOn: Date;
+    }[]
+  | undefined;
 export default function ProfileDashBoard(props: childprops) {
   const navigate = useNavigate();
   const UrlProfile = props.Data.profilePhotoUrl
@@ -25,6 +41,7 @@ export default function ProfileDashBoard(props: childprops) {
   const [isInputDisabled, setInputState] = useState(true);
   const [isfetchActive, setStateFetch] = useState(false);
   const [isEdit, setEditState] = useState(false);
+  const [Posts, setPosts] = useState<posts | null>([]);
   const formref = useRef(null);
   async function handleEditclick() {
     if (!isEdit) {
@@ -58,87 +75,315 @@ export default function ProfileDashBoard(props: childprops) {
     setInputState(true);
     setEditState(false);
   }
-
+  useEffect(() => {
+    const controller = new AbortController();
+    const fetchPosts = async () => {
+      try {
+        const reponse = await fetch(
+          `${import.meta.env.VITE_SERVERLINK}/user/userPosts?id=${props.Data.id}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${sessionStorage.getItem("UserEpoch")}`,
+            },
+            signal: controller.signal,
+          },
+        );
+        const data = await reponse.json();
+        if (reponse.ok) {
+          setPosts(data);
+        } else {
+          setPosts(null);
+        }
+      } catch (err) {}
+      fetchPosts();
+      return () => controller.abort();
+    };
+  }, [props.Data]);
+  if (Posts === undefined)
+    return (
+      <>
+        <main className={style.DashBoardMain}>
+          <div className={style.ProfileContainer}>
+            <div className={style.ProfilePhotoContainer}>
+              <div className={style.inputProfileImageHolder}>
+                <div
+                  className={`${style.svgContainer} ${isEdit ? style.active : ""}`}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="48px"
+                    viewBox="0 -960 960 960"
+                    width="48px"
+                    fill="#000000"
+                  >
+                    <path d="M120-120v-128l575-574q8-8 19-12.5t23-4.5q11 0 22 4.5t20 12.5l44 44q9 9 13 20t4 22q0 11-4.5 22.5T823-694L248-120H120Zm619-577 40-40-41-41-40 40 41 41Z" />
+                  </svg>
+                </div>
+                <div
+                  className={`${style.inputTag} ${isEdit ? style.active : ""}`}
+                >
+                  <form ref={formref} onSubmit={(e) => e.preventDefault()}>
+                    <input
+                      type="file"
+                      name="editProfilphoto"
+                      id="profileInput"
+                      accept="image/*"
+                      title="Select"
+                      onChange={renderImage}
+                    />
+                  </form>
+                </div>
+                {Url ? (
+                  <img src={Url} alt="" />
+                ) : (
+                  <img src={UrlProfile} alt="" />
+                )}
+              </div>
+            </div>
+            <div className={style.ProfileDetailsContainer}>
+              <div className={style.ButtunHolder}>
+                {isEdit && (
+                  <button type="button" onClick={handleCancel}>
+                    Cancel
+                  </button>
+                )}
+                {isfetchActive ? (
+                  <SvgLoading />
+                ) : (
+                  <button
+                    type="button"
+                    className={isEdit ? style.SaveBtn : ""}
+                    onClick={handleEditclick}
+                  >
+                    {isEdit ? "Save" : "Edit"}
+                  </button>
+                )}
+              </div>
+              <div className={style.inputsContainer}>
+                <label htmlFor="" className={style.nodisplay}>
+                  Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  className={isInputDisabled ? "" : style.active}
+                  defaultValue={props.Data.name}
+                  disabled={isInputDisabled}
+                  title="name"
+                />
+                <label htmlFor="" className={style.nodisplay}>
+                  Email
+                </label>
+                <input
+                  type="text"
+                  name="email"
+                  className={isInputDisabled ? "" : style.active}
+                  defaultValue={props.Data.email}
+                  disabled={isInputDisabled}
+                  title="Email"
+                  id="nodisplay"
+                />
+                <label htmlFor="" className={style.display}>
+                  {`joined - ${dateJoined}`}
+                </label>
+              </div>
+            </div>
+          </div>
+          <div className={style.ProfilePostsContainer}>
+            <LoadingAnimation />
+          </div>
+        </main>
+      </>
+    );
+  else if (Posts === null || Posts.length === 0)
+    return (
+      <>
+        <main className={style.DashBoardMain}>
+          <div className={style.ProfileContainer}>
+            <div className={style.ProfilePhotoContainer}>
+              <div className={style.inputProfileImageHolder}>
+                <div
+                  className={`${style.svgContainer} ${isEdit ? style.active : ""}`}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="48px"
+                    viewBox="0 -960 960 960"
+                    width="48px"
+                    fill="#000000"
+                  >
+                    <path d="M120-120v-128l575-574q8-8 19-12.5t23-4.5q11 0 22 4.5t20 12.5l44 44q9 9 13 20t4 22q0 11-4.5 22.5T823-694L248-120H120Zm619-577 40-40-41-41-40 40 41 41Z" />
+                  </svg>
+                </div>
+                <div
+                  className={`${style.inputTag} ${isEdit ? style.active : ""}`}
+                >
+                  <form ref={formref} onSubmit={(e) => e.preventDefault()}>
+                    <input
+                      type="file"
+                      name="editProfilphoto"
+                      id="profileInput"
+                      accept="image/*"
+                      title="Select"
+                      onChange={renderImage}
+                    />
+                  </form>
+                </div>
+                {Url ? (
+                  <img src={Url} alt="" />
+                ) : (
+                  <img src={UrlProfile} alt="" />
+                )}
+              </div>
+            </div>
+            <div className={style.ProfileDetailsContainer}>
+              <div className={style.ButtunHolder}>
+                {isEdit && (
+                  <button type="button" onClick={handleCancel}>
+                    Cancel
+                  </button>
+                )}
+                {isfetchActive ? (
+                  <SvgLoading />
+                ) : (
+                  <button
+                    type="button"
+                    className={isEdit ? style.SaveBtn : ""}
+                    onClick={handleEditclick}
+                  >
+                    {isEdit ? "Save" : "Edit"}
+                  </button>
+                )}
+              </div>
+              <div className={style.inputsContainer}>
+                <label htmlFor="" className={style.nodisplay}>
+                  Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  className={isInputDisabled ? "" : style.active}
+                  defaultValue={props.Data.name}
+                  disabled={isInputDisabled}
+                  title="name"
+                />
+                <label htmlFor="" className={style.nodisplay}>
+                  Email
+                </label>
+                <input
+                  type="text"
+                  name="email"
+                  className={isInputDisabled ? "" : style.active}
+                  defaultValue={props.Data.email}
+                  disabled={isInputDisabled}
+                  title="Email"
+                  id="nodisplay"
+                />
+                <label htmlFor="" className={style.display}>
+                  {`joined - ${dateJoined}`}
+                </label>
+              </div>
+            </div>
+          </div>
+          <div className={style.noPostsdiv}>
+            Nothing to show here, you have not posted anything yet.
+          </div>
+        </main>
+      </>
+    );
   return (
     <>
       <main className={style.DashBoardMain}>
-        <div className={style.ProfilePhotoContainer}>
-          <div className={style.inputProfileImageHolder}>
-            <div
-              className={`${style.svgContainer} ${isEdit ? style.active : ""}`}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="48px"
-                viewBox="0 -960 960 960"
-                width="48px"
-                fill="#000000"
+        <div className={style.ProfileContainer}>
+          <div className={style.ProfilePhotoContainer}>
+            <div className={style.inputProfileImageHolder}>
+              <div
+                className={`${style.svgContainer} ${isEdit ? style.active : ""}`}
               >
-                <path d="M120-120v-128l575-574q8-8 19-12.5t23-4.5q11 0 22 4.5t20 12.5l44 44q9 9 13 20t4 22q0 11-4.5 22.5T823-694L248-120H120Zm619-577 40-40-41-41-40 40 41 41Z" />
-              </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="48px"
+                  viewBox="0 -960 960 960"
+                  width="48px"
+                  fill="#000000"
+                >
+                  <path d="M120-120v-128l575-574q8-8 19-12.5t23-4.5q11 0 22 4.5t20 12.5l44 44q9 9 13 20t4 22q0 11-4.5 22.5T823-694L248-120H120Zm619-577 40-40-41-41-40 40 41 41Z" />
+                </svg>
+              </div>
+              <div
+                className={`${style.inputTag} ${isEdit ? style.active : ""}`}
+              >
+                <form ref={formref} onSubmit={(e) => e.preventDefault()}>
+                  <input
+                    type="file"
+                    name="editProfilphoto"
+                    id="profileInput"
+                    accept="image/*"
+                    title="Select"
+                    onChange={renderImage}
+                  />
+                </form>
+              </div>
+              {Url ? <img src={Url} alt="" /> : <img src={UrlProfile} alt="" />}
             </div>
-            <div className={`${style.inputTag} ${isEdit ? style.active : ""}`}>
-              <form ref={formref} onSubmit={(e) => e.preventDefault()}>
-                <input
-                  type="file"
-                  name="editProfilphoto"
-                  id="profileInput"
-                  accept="image/*"
-                  title="Select"
-                  onChange={renderImage}
-                />
-              </form>
+          </div>
+          <div className={style.ProfileDetailsContainer}>
+            <div className={style.ButtunHolder}>
+              {isEdit && (
+                <button type="button" onClick={handleCancel}>
+                  Cancel
+                </button>
+              )}
+              {isfetchActive ? (
+                <SvgLoading />
+              ) : (
+                <button
+                  type="button"
+                  className={isEdit ? style.SaveBtn : ""}
+                  onClick={handleEditclick}
+                >
+                  {isEdit ? "Save" : "Edit"}
+                </button>
+              )}
             </div>
-            {Url ? <img src={Url} alt="" /> : <img src={UrlProfile} alt="" />}
+            <div className={style.inputsContainer}>
+              <label htmlFor="" className={style.nodisplay}>
+                Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                className={isInputDisabled ? "" : style.active}
+                defaultValue={props.Data.name}
+                disabled={isInputDisabled}
+                title="name"
+              />
+              <label htmlFor="" className={style.nodisplay}>
+                Email
+              </label>
+              <input
+                type="text"
+                name="email"
+                className={isInputDisabled ? "" : style.active}
+                defaultValue={props.Data.email}
+                disabled={isInputDisabled}
+                title="Email"
+                id="nodisplay"
+              />
+              <label htmlFor="" className={style.display}>
+                {`joined - ${dateJoined}`}
+              </label>
+            </div>
           </div>
         </div>
-        <div className={style.ProfileDetailsContainer}>
-          <div className={style.ButtunHolder}>
-            {isEdit && (
-              <button type="button" onClick={handleCancel}>
-                Cancel
-              </button>
-            )}
-            {isfetchActive ? (
-              <SvgLoading />
-            ) : (
-              <button
-                type="button"
-                className={isEdit ? style.SaveBtn : ""}
-                onClick={handleEditclick}
-              >
-                {isEdit ? "Save" : "Edit"}
-              </button>
-            )}
-          </div>
-          <div className={style.inputsContainer}>
-            <label htmlFor="">Name</label>
-            <input
-              type="text"
-              name="name"
-              className={isInputDisabled ? "" : style.active}
-              defaultValue={props.Data.name}
-              disabled={isInputDisabled}
-              title="name"
-            />
-            <label htmlFor="">Email</label>
-            <input
-              type="text"
-              name="email"
-              className={isInputDisabled ? "" : style.active}
-              defaultValue={props.Data.email}
-              disabled={isInputDisabled}
-              title="Email"
-            />
-            <label htmlFor="">Date joined</label>
-            <input
-              type="text"
-              name="dateJoined"
-              defaultValue={dateJoined}
-              disabled
-              title="DateJoined"
-            />
-          </div>
+        <div className={style.ProfilePostsContainer}>
+          {Posts.map((post) => (
+            <Link to={`/post/${post.id}`} key={post.id}>
+              <EpochPost dto={post} />
+            </Link>
+          ))}
         </div>
       </main>
     </>

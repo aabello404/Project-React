@@ -69,4 +69,8 @@ div.sideTopclass:hover {
   div.explorediv:hover > div.exploreListContainer {
   display: none;
 }
+  div.sideTopclassexplore:hover,
+div.sideTopclass:hover {
+  background-color: Transparent;
+}
 }

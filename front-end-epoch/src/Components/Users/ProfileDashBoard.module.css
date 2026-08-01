@@ -124,3 +124,109 @@ button.SaveBtn:hover {
   transform: translateY(-3px);
   box-shadow: 0 1px 4px black;
 }
+
+@media (max-width: 768px) {
+  main.DashBoardMain {
+    margin-top: 70px;
+    margin-left: 0px;
+    padding-top: 13px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: calc(100vh - 70px);
+    display: flex;
+    width: 99%;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  div.ProfilePhotoContainer {
+    width: 100%;
+  }
+  div.ProfileDetailsContainer {
+    width: 100%;
+    position: relative;
+  }
+  div.ProfileContainer
+  {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 0.6fr 1fr;
+    
+  }
+div.inputProfileImageHolder {
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+div.inputProfileImageHolder img {
+  width: 10rem;
+  height: 9rem;
+  /* background-color: black; */
+  border-radius: 50%;
+  z-index: 4;
+}
+div.ButtunHolder {
+  position: absolute;
+  right: 8%;
+  bottom: -20%;
+  display: inline-flex;
+  gap: 10px;
+}
+div.inputsContainer input {
+  font-size: 16px;
+  border-radius: 9px;
+  border: none;
+  padding: 5px 11px;
+  background-color: transparent;
+  height: 2rem;
+  width: 90%;
+}
+label.nodisplay {
+  display: none;
+  padding: 5px 11px;
+}
+div.inputTag {
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0rem;
+  border-radius: 50%;
+  top: 0rem;
+  z-index: 5;
+  opacity: 0.5;
+  display: none;
+  background-color: transparent;
+}
+div.svgContainer {
+  position: absolute;
+  z-index: 5;
+}
+label.display {
+  padding: 5px 11px;
+  color: rgb(233, 155, 11);
+}
+div.ProfilePostsContainer
+{
+  column-count: 3;
+  column-gap: 10px;
+  width: 97%;
+  margin-top: 50px;
+}
+div.noPostsdiv
+{
+  width: 80%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+  padding-top: 20px;
+  margin-left: 7%;
+  background-color:transparent;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+}

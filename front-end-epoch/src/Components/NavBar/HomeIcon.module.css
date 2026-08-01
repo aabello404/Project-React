@@ -11,3 +11,10 @@ div.sideTopclassexplore:hover,
 div.sideTopclass:hover {
   background-color: rgb(130, 127, 124);
 }
+
+@media (max-width: 768px) {
+  div.sideTopclassexplore:hover,
+div.sideTopclass:hover {
+  background-color: transparent;
+}
+}
