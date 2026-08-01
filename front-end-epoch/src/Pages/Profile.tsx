@@ -19,7 +19,7 @@ export default function Profile() {
     if (!accessToken) navigate("/auth");
     const Fetch = async () => {
       try {
-        const response = await fetch("http://localhost:9000/user/profile", {
+        const response = await fetch(`${import.meta.env.VITE_SERVERLINK}/user/profile`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${accessToken}`,

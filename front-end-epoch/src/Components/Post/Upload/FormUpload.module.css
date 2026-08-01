@@ -306,3 +306,37 @@ svg .path {
     stroke-dashoffset: -124;
   }
 }
+
+
+@media (max-width: 768px) {
+ div.formHolder {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+    width: 100%;
+  }
+  div.mmPage {
+    width: 100%;
+  }
+  div.photoDisplay {
+    width: 90%;
+    height: 40vh;
+  }
+  div.formUpload1 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    gap: 20px;
+  }
+  div.iptContainer {
+    width: 90%;
+    margin-right: 0;
+    
+  }
+}

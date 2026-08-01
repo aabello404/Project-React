@@ -32,6 +32,12 @@ export default function AuthPanel(props: childprops) {
           <SignIn _iSsingIn={isSignIn} _isauthPanel={props._isauthPanel} />
           <SignUp _iSsingIn={isSignIn} _isauthPanel={props._isauthPanel} />
         </div>
+        <div className={style.changeForm}>
+          {isSignIn ? <p>You don't have an account?</p> : <p>You already have an account?</p>}
+          <button type="button" onClick={() => setIsSignIn(!isSignIn)}>
+            {isSignIn ? "Sign up" : "Sign in"}
+          </button>
+        </div>
       </div>
     </>
   );

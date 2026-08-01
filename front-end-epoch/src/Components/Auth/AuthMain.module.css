@@ -5,3 +5,8 @@ div.AuthBody {
 
   background: #ffffff;
 }
+@media (max-width: 768px) {
+  div.AuthBody {
+    overflow: scroll;
+  }
+}

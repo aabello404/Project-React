@@ -26,7 +26,7 @@ export async function connect(
     const accessToken = sessionStorage.getItem("UserEpoch");
     if (!accessToken) navigate("/auth");
     _setStateFetch(true);
-    const response = await fetch("http://localhost:9000/user/upload", {
+    const response = await fetch(`${import.meta.env.VITE_SERVERLINK}/user/upload`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${accessToken}`,

@@ -118,7 +118,7 @@ export async function CreateUser(Inputs: {
   };
   return new Promise<Message>(async (resolve, reject) => {
     try {
-      const response = await fetch("http://localhost:9000/auth/signUp", {
+      const response = await fetch(`${import.meta.env.VITE_SERVERLINK}/auth/signUp`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

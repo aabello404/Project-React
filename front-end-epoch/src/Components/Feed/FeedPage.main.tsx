@@ -26,7 +26,7 @@ export default function Feed() {
           navigate("/auth");
           return;
         }
-        const response = await fetch("http://localhost:9000/user/getPost", {
+        const response = await fetch(`${import.meta.env.VITE_SERVERLINK}/user/getPost`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

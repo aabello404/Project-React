@@ -12,7 +12,7 @@ export async function Fetch(
       }
       const accessToken = sessionStorage.getItem("UserEpoch");
       if (!accessToken) navigate("/auth");
-      const response = await fetch("http://localhost:9000/user/editprofile", {
+      const response = await fetch(`${import.meta.env.VITE_SERVERLINK}/user/editprofile`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${accessToken}`,

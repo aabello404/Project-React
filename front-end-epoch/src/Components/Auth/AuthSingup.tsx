@@ -64,7 +64,6 @@ export default function SignUp(props: childprops) {
         }, 2000);
       } catch (error: any) {
         setResponse(error);
-        console.log(error);
       }
     }
   }

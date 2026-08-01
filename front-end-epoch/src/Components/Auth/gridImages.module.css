@@ -13,7 +13,7 @@ div.gridimages {
   box-sizing: border-box;
   position: absolute;
   z-index: 1;
-  overflow: hidden;
+  
   bottom: 0;
   left: 0;
   right: 0;
@@ -41,4 +41,22 @@ div.box.show {
 div.box img {
   height: 100%;
   width: 100%;
+}
+@media (max-width: 768px) {
+  div.gridimages {
+    width: 100vw;
+    margin-top: 100px;
+    bottom: 0;
+    top:160px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "box1 box2"
+      "box3 box4"
+      "box5 box6"
+      "box7 box8"
+      "box9 box10"
+      "box11 box12"
+      "box13 box13";
+    height:max-content;
+  }
 }

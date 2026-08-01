@@ -62,3 +62,9 @@ div.chooseFrom button {
 div.chooseFrom button:focus {
   outline: none;
 }
+
+@media (max-width: 768px) {
+  div.chooseFrom {
+    display: none;
+  }
+}

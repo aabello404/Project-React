@@ -25,15 +25,56 @@ div.allcontent.visible {
 }
 div.boxContainer {
   border-radius: 14px;
-  padding: 11px;
+  /* padding: 11px; */
   height: 540px;
   z-index: 2;
   width: 724px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   box-shadow: 0 1px 6px rgb(0, 0, 0);
   border: 2px solid rgb(255, 255, 255);
   background-color: transparent;
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   position: relative;
+}
+div.changeForm
+{
+  display:none;
+  position: absolute;
+  bottom: 20%;
+  z-index: 3;
+}
+div.changeForm p
+  {
+    color: white;
+    text-align: center;
+    margin: 0%;
+  }
+  div.changeForm button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+@media (max-width:768px){
+ div.allcontent{
+  height: 100%;
+  width: 100%;
+ }
+ div.boxContainer{
+  grid-template-columns: 1fr;
+ }
+ div.changeForm
+{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  bottom: 20%;
+  z-index: 3;
+}
 }

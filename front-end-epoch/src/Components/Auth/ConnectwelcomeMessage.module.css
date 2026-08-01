@@ -1,6 +1,6 @@
 div.connectInfo {
   display: flex;
-  width: 100%;
+  width: 100vw;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -88,4 +88,11 @@ button.connectBtn:hover {
 button.connectBtn:active {
   transform: translateY(0);
   box-shadow: 0 4px 10px rgba(139, 30, 30, 0.25);
+}
+@media (max-width: 768px) {
+  
+
+  div.categories {
+    display: none;
+  }
 }

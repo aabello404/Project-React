@@ -100,3 +100,19 @@ button.btnsearch {
 button.btnsearch:hover {
   background: linear-gradient(grey, white);
 }
+
+@media (max-width: 768px) {
+  div.iptsearch {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 100%;
+    display: none;
+  }
+  header.main{
+    width: 120%;
+    overflow: hidden;
+  }
+}

@@ -22,7 +22,7 @@ export default function ImageDescription(props: childprops) {
   const CreateOrDeleteLike = async () => {
     if (!isliked) {
       try {
-        const response = await fetch("http://localhost:9000/epoch/like", {
+        const response = await fetch(`${import.meta.env.VITE_SERVERLINK}/epoch/like`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -42,7 +42,7 @@ export default function ImageDescription(props: childprops) {
       }
     } else {
       try {
-        const response = await fetch("http://localhost:9000/epoch/removelike", {
+        const response = await fetch(`${import.meta.env.VITE_SERVERLINK}/epoch/removelike`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -72,7 +72,7 @@ export default function ImageDescription(props: childprops) {
   }
   return (
     <>
-      <div>
+      <div className={style.imagefullcontainer}>
         <div className={style.imagefull}>
           <div className={style.posterInfo}>
             <img

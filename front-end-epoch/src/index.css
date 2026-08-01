@@ -7,8 +7,23 @@
 }
 body {
   height: auto;
-  overflow-y: auto;
+  overflow: hidden;
   box-sizing: border-box;
   position: relative;
+  /* background-color: rgb(155, 45, 45); */
+}
+@media (max-width: 768px) {
+  body {
+    overflow: auto;
+    width: 100vw;
+    overflow-x: hidden;
+    
+  }
+  div#root {
+    position: relative;
+    box-sizing: border-box;
+    overflow-x: hidden;
+   
+  }
 }
 /* the bove style is for feed page */

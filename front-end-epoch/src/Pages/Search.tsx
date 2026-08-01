@@ -23,7 +23,7 @@ export default function Search() {
     const fetchSearch = async () => {
       try {
         const response = await fetch(
-          `http://localhost:9000/user/search?query=${searchQuery}`,
+          `${import.meta.env.VITE_SERVERLINK}/user/search?query=${searchQuery}`,
           {
             method: "GET",
             headers: {

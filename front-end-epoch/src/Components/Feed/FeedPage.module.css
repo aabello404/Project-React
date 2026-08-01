@@ -24,7 +24,11 @@ div.articleContainer {
     column-count: 6;
   }
 }
-
+@media (max-width:768px){
+  main.mainFeed { 
+  margin-left:0px;
+}
+}
 @media (max-width: 800px) {
   div.articleContainer {
     column-count: 5;

@@ -16,7 +16,7 @@ function GlobalHeader() {
     <>
       <header className={style.main}>
         <div className={style.companyname}>
-          <a href="" id="home-link" title="home">
+          <a href="/" id="home-link" title="home">
             <svg
               width="180"
               height="60"

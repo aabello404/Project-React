@@ -49,7 +49,7 @@ export default function Post() {
     window.scrollTo(0, 0);
     const Controller = new AbortController();
     const getPage = async () => {
-      const fUrl = `http://localhost:9000/user/post?id=${id}`;
+      const fUrl = `${import.meta.env.VITE_SERVERLINK}/user/post?id=${id}`;
       //console.log(fUrl);
       try {
         const response = await fetch(fUrl, {
