@@ -41,7 +41,7 @@ export default function ProfileDashBoard(props: childprops) {
   const [isInputDisabled, setInputState] = useState(true);
   const [isfetchActive, setStateFetch] = useState(false);
   const [isEdit, setEditState] = useState(false);
-  const [Posts, setPosts] = useState<posts | null>([]);
+  const [Posts, setPosts] = useState<posts | null>(undefined);
   const formref = useRef(null);
   async function handleEditclick() {
     if (!isEdit) {
@@ -79,6 +79,7 @@ export default function ProfileDashBoard(props: childprops) {
     const controller = new AbortController();
     const fetchPosts = async () => {
       try {
+        console.log('heel');
         const reponse = await fetch(
           `${import.meta.env.VITE_SERVERLINK}/user/userPosts?id=${props.Data.id}`,
           {
@@ -91,16 +92,19 @@ export default function ProfileDashBoard(props: childprops) {
           },
         );
         const data = await reponse.json();
+        console.log("data", data);
         if (reponse.ok) {
           setPosts(data);
         } else {
           setPosts(null);
         }
-      } catch (err) {}
-      fetchPosts();
-      return () => controller.abort();
+      } catch (err) {
+        console.log("Error fetching posts", err);
+      }
     };
-  }, [props.Data]);
+    fetchPosts();
+    return () => controller.abort();
+  },[]);
   if (Posts === undefined)
     return (
       <>
