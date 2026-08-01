@@ -2,8 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import acountProfile from "../../../assets/svg/account_circle_53dp_E3E3E3_FILL1_wght400_GRAD0_opsz48.svg";
 import style from "./GlobalHeader.module.css";
 import { useState, type ChangeEvent } from "react";
+
 function GlobalHeader() {
   const [serachInput, setInput] = useState("");
+
   const navigate = useNavigate();
   function hanldeInputs(e: ChangeEvent<HTMLInputElement>) {
     const { value } = e.target;
@@ -12,6 +14,7 @@ function GlobalHeader() {
   function handleSearch() {
     serachInput.trim() && navigate(`/search/${serachInput.trim()}`);
   }
+ 
   return (
     <>
       <header className={style.main}>
