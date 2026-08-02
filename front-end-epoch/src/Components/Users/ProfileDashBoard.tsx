@@ -299,6 +299,8 @@ export default function ProfileDashBoard(props: childprops) {
     );
   return (
     <>
+      <div className={style.firstwrapper}>
+        <div></div>
       <main className={style.DashBoardMain}>
         <div className={style.ProfileContainer}>
           <div className={style.ProfilePhotoContainer}>
@@ -390,6 +392,8 @@ export default function ProfileDashBoard(props: childprops) {
           ))}
         </div>
       </main>
+        <div></div>
+      </div>
     </>
   );
 }
